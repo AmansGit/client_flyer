@@ -1,2 +1,2 @@
-web: gunicorn flyer.wsgi --log-file -
+web: gunicorn flyer.wsgi.application --log-file -
 

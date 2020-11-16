@@ -10,7 +10,7 @@ router.register(r'', FlyerViewSet, basename='FlyerModel')
 urlpatterns = router.urls
 
 
-# urlpatterns = [
+# urlpatterns += [
 # 	# path('', Flyer),
-# 	path('<int:id>', Flyer),
+# 	path('<int:id>', FlyerGetSet),
 # ]

@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'flyer.settings')
 
 application = get_wsgi_application()
+# from swagger_ui import api_doc
+
+# api_doc(application, config_url='./test.yaml', url_prefix='/api/doc', title='API doc')

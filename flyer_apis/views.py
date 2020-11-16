@@ -80,57 +80,59 @@ import requests as request
 
 
 class FlyerViewSet(ModelViewSet):
+	# def __init__(self, *k, **kw):
+	# 	pass
 	queryset = FlyerDetail.objects.all()
 	serializer_class=FlyerDetailSerializer
-	@action(methods=['POST'], detail=True)
-	def create_flyer(self, request):
-		response = {}
-		flyer_json = json.loads(request.body)
-		company_name = flyer_json['company_name']
-		creators_name = flyer_json['creators_name']
-		email_id = flyer_json['email_id']
-		phone_no = flyer_json['phone_no']
-		content = flyer_json['content']
+	# @action(methods=['POST'], detail=True)
+	# def create_flyer(self, request):
+	# 	response = {}
+	# 	flyer_json = json.loads(request.body)
+	# 	company_name = flyer_json['company_name']
+	# 	creators_name = flyer_json['creators_name']
+	# 	email_id = flyer_json['email_id']
+	# 	phone_no = flyer_json['phone_no']
+	# 	content = flyer_json['content']
 
-		if not is_json(data):
-			return self.render_to_http_response(json.dumps({
-				'msg': 'Not valid json data'
-				}), status=400)
+	# 	if not is_json(data):
+	# 		return self.render_to_http_response(json.dumps({
+	# 			'msg': 'Not valid json data'
+	# 			}), status=400)
 
-		flyer_qs = FlyerDetail(company_name=company_name, creators_name=creators_name,
-						 email_id=email_id, phone_no=phone_no, content=content)
+	# 	flyer_qs = FlyerDetail(company_name=company_name, creators_name=creators_name,
+	# 					 email_id=email_id, phone_no=phone_no, content=content)
 	
-		try:
-			flyer_qs.save()
-			response = json.dumps({
-				'Success': "Your data is stored"
-				})
-		except:
-			response = json.dumps({
-				'Error': "Something went wrong"
-				})
-		return HttpResponse(response, content_type='application/json')
+	# 	try:
+	# 		flyer_qs.save()
+	# 		response = json.dumps({
+	# 			'Success': "Your data is stored"
+	# 			})
+	# 	except:
+	# 		response = json.dumps({
+	# 			'Error': "Something went wrong"
+	# 			})
+	# 	return HttpResponse(response, content_type='application/json')
 
 
-class FlyerGetSet(ModelViewSet):
-	@action(methods=['GET'], detail=True)
-	def retrieve_flyer(self,id):
-		print("retrieve method")
-		response = {}
-		query = pk
-		qs = FlyerDetail.objects.filter(id=pk)
-		if qs is None:
-			status_code = 400
-			return HttpResponseBadRequest('Invalid refernce ID', status=status_code)
+# class FlyerGetSet(ModelViewSet):
+# 	@action(methods=['GET'], detail=True)
+# 	def retrieve_flyer(self,id):
+# 		print("retrieve method")
+# 		response = {}
+# 		query = pk
+# 		qs = FlyerDetail.objects.filter(id=pk)
+# 		if qs is None:
+# 			status_code = 400
+# 			return HttpResponseBadRequest('Invalid refernce ID', status=status_code)
 
-		else:
-			response = {
-				'Company Name': qs.company_name,
-				'Created by': qs.creators_name,
-				'Email-id': qs.email_id,
-				'Phone': qs.phone_no,
-				'Content': qs.content
-			}
-			json_data = json.dumps(response)
-			return HttpResponse(json_data, content_type= 'application/json')
+# 		else:
+# 			response = {
+# 				'Company Name': qs.company_name,
+# 				'Created by': qs.creators_name,
+# 				'Email-id': qs.email_id,
+# 				'Phone': qs.phone_no,
+# 				'Content': qs.content
+# 			}
+# 			json_data = json.dumps(response)
+# 			return HttpResponse(json_data, content_type= 'application/json')
 
