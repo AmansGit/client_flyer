@@ -5,11 +5,12 @@ from .views import FlyerViewSet
 router = routers.SimpleRouter()
 
 router.register(r'', FlyerViewSet, basename='FlyerModel')
+# router.register(r'<int:id>', FlyerViewSet.)
 
 urlpatterns = router.urls
 
 
 # urlpatterns = [
 # 	# path('', Flyer),
-# 	path('<id>', Flyer)
+# 	path('<int:id>', Flyer),
 # ]
