@@ -27,3 +27,4 @@ urllib3==1.26.2
 uuid==1.30
 django-heroku
 whitenoise
+django-rest-swagger
